@@ -1,0 +1,64 @@
+18.3.2024, 14:12:41 - INFO - Server listening on port http://127.0.0.1:3030/
+18.3.2024, 14:14:33 - INFO - Server listening on port http://127.0.0.1:3030/
+18.3.2024, 20:06:06 - DEBUG - req.query | {"title":"נשנש","description":"1","severity":"4","_id":"nR7Tm"}
+18.3.2024, 20:07:00 - DEBUG - req.query | {"title":"baba","description":"1","severity":"4","_id":"nR7Tm"}
+18.3.2024, 20:23:36 - INFO - Bug nR7Tm removed
+18.3.2024, 20:23:55 - ERROR - Cannot get bug | Bug not found!
+18.3.2024, 20:27:56 - DEBUG - req.query | {"title":"yaya","description":"22","severity":"2"}
+18.3.2024, 20:34:29 - ERROR - Cannot get bug | Bug not found!
+18.3.2024, 20:34:38 - ERROR - Cannot get bug | Bug not found!
+18.3.2024, 20:35:02 - DEBUG - req.query | {"title":"toto","description":"qwert"}
+18.3.2024, 20:35:47 - DEBUG - req.query | {"title":"toto","description":"nana","_id":"5ranf"}
+18.3.2024, 20:36:30 - INFO - Bug 5ranf removed
+18.3.2024, 20:36:33 - ERROR - Cannot get bug | Bug not found!
+18.3.2024, 20:38:38 - DEBUG - req.query | {"title":"toto","description":"qwert","severity":"2"}
+18.3.2024, 20:50:08 - INFO - Server listening on port http://127.0.0.1:3030/
+18.3.2024, 20:50:22 - DEBUG - req.query | {"title":"r","description":"r","severity":"5"}
+18.3.2024, 20:50:39 - INFO - Server listening on port http://127.0.0.1:3030/
+18.3.2024, 20:50:47 - INFO - Server listening on port http://127.0.0.1:3030/
+18.3.2024, 20:50:59 - DEBUG - req.query | {}
+18.3.2024, 20:51:04 - INFO - Bug u3Rx0 removed
+18.3.2024, 20:51:09 - DEBUG - req.query | {}
+18.3.2024, 20:51:27 - INFO - Bug QJRQ3 removed
+18.3.2024, 20:51:37 - DEBUG - req.query | {}
+18.3.2024, 20:51:40 - INFO - Bug c2ks3 removed
+18.3.2024, 20:51:47 - INFO - Server listening on port http://127.0.0.1:3030/
+18.3.2024, 20:51:53 - INFO - Server listening on port http://127.0.0.1:3030/
+18.3.2024, 20:52:38 - INFO - Server listening on port http://127.0.0.1:3030/
+18.3.2024, 20:52:42 - DEBUG - req.query | {}
+18.3.2024, 20:54:02 - INFO - Server listening on port http://127.0.0.1:3030/
+18.3.2024, 20:54:03 - INFO - Bug cnR0x removed
+18.3.2024, 20:54:09 - DEBUG - req.query | {"title":"rr","description":"rr","severity":"5"}
+18.3.2024, 20:54:43 - DEBUG - req.query | {"title":"rr","description":"rr","severity":"2","_id":"dPUpD"}
+18.3.2024, 20:55:56 - INFO - Server listening on port http://127.0.0.1:3030/
+18.3.2024, 21:02:18 - INFO - Server listening on port http://127.0.0.1:3030/
+18.3.2024, 21:08:41 - INFO - Server listening on port http://127.0.0.1:3030/
+19.3.2024, 7:42:24 - INFO - Server listening on port http://127.0.0.1:3030/
+19.3.2024, 7:48:38 - INFO - Server listening on port http://127.0.0.1:3030/
+19.3.2024, 7:49:24 - INFO - Server listening on port http://127.0.0.1:3030/
+19.3.2024, 7:50:39 - INFO - Server listening on port http://127.0.0.1:3030/
+19.3.2024, 7:51:54 - INFO - Server listening on port http://127.0.0.1:3030/
+19.3.2024, 8:42:07 - INFO - Server listening on port http://127.0.0.1:3030/
+19.3.2024, 8:42:28 - INFO - Server listening on port http://127.0.0.1:3030/
+19.3.2024, 8:42:35 - INFO - Server listening on port http://127.0.0.1:3030/
+19.3.2024, 8:43:31 - INFO - Server listening on port http://127.0.0.1:3030/
+19.3.2024, 8:44:11 - ERROR - Cannot get bug | Bug not found!
+19.3.2024, 8:45:36 - INFO - Bug cBLIU removed
+19.3.2024, 8:49:23 - DEBUG - req.query | {"title":"toto","description":"hello","severity":"4"}
+19.3.2024, 8:50:08 - DEBUG - req.query | {"title":"toto","description":"nana","_id":"soQsG","severity":"1"}
+19.3.2024, 8:53:14 - DEBUG - req.query | {"title":"rr","description":"rr","severity":"3","_id":"dPUpD"}
+19.3.2024, 8:53:19 - INFO - Bug dPUpD removed
+19.3.2024, 8:53:29 - DEBUG - req.query | {"title":"gaga","description":"baba","severity":"4"}
+19.3.2024, 9:07:38 - INFO - Bug LQc7A removed
+19.3.2024, 9:07:45 - INFO - Bug soQsG removed
+19.3.2024, 9:20:52 - DEBUG - req.query | {"title":"r","description":"r","severity":"4","_id":"31Q8y"}
+19.3.2024, 9:23:13 - DEBUG - req.query | {"title":"popo","description":"papi","severity":"1"}
+19.3.2024, 9:27:21 - INFO - Server listening on port http://127.0.0.1:3030/
+19.3.2024, 9:27:31 - DEBUG - req.query | {"title":"popo","description":"papi","severity":"2","_id":"i0QX5"}
+19.3.2024, 9:27:50 - DEBUG - req.query | {"title":"lolo","description":"lala","severity":"3"}
+19.3.2024, 9:31:07 - INFO - Server listening on port http://127.0.0.1:3030/
+19.3.2024, 9:31:21 - DEBUG - req.query | {"title":"wowo","description":"wawa","severity":"2"}
+19.3.2024, 9:31:36 - DEBUG - req.query | {"title":"wowo","description":"wawa","severity":"3","_id":"7alC8"}
+19.3.2024, 9:36:14 - INFO - Server listening on port http://127.0.0.1:3030/
+19.3.2024, 9:40:53 - INFO - Server listening on port http://127.0.0.1:3030/
+19.3.2024, 9:49:46 - INFO - Server listening on port http://127.0.0.1:3030/
