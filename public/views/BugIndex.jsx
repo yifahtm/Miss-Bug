@@ -1,23 +1,28 @@
-const {useEffect, useState} = React
-const {Link} = ReactRouterDOM
+const { useEffect, useState } = React
+const { Link, useSearchParams } = ReactRouterDOM
 
-import {BugFilter} from '../cmps/BugFilter.jsx'
-import {BugList} from '../cmps/BugList.jsx'
-import {bugService} from '../services/bug.service.js'
-import {showSuccessMsg, showErrorMsg} from '../services/event-bus.service.js'
+import { BugFilter } from '../cmps/BugFilter.jsx'
+import { BugSort } from '../cmps/BugSort.jsx'
+import { BugList } from '../cmps/BugList.jsx'
+import { bugService } from '../..bug.service.js'
+import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 
 export function BugIndex() {
+  const [searchParams, setSearchParams] = useSearchParams()
   const [bugs, setBugs] = useState([])
-  const [filterBy, setFilterBy] = useState(bugService.getDefaultFilter())
+  const [sortBy, setSortBy] = useState({})
+  const [filterBy, setFilterBy] = useState(
+    bugService.getFilterFromParams(searchParams)
+  )
 
   useEffect(() => {
     loadBugs()
     showSuccessMsg('Welcome to bug index!')
-  }, [filterBy])
+    setSearchParams(filterBy)
+  }, [filterBy, sortBy])
 
   function loadBugs() {
-    bugService.query(filterBy).then((bugs) => setBugs(bugs))
-    // bugService.query().then(setBugs)
+    bugService.query(filterBy, sortBy).then(setBugs)
   }
 
   function onRemoveBug(bugId) {
@@ -29,15 +34,25 @@ export function BugIndex() {
   }
 
   function onSetFilter(filterBy) {
-    setFilterBy((prevFilterBy) => ({...prevFilterBy, ...filterBy}))
+    setFilterBy((prevFilterBy) => ({ ...prevFilterBy, ...filterBy }))
   }
 
-  // console.log('render');
-  return (
+  function onChangePage(diff) {
+    let nextPageIdx = filterBy.pageIdx + diff
+    if (nextPageIdx < 0) nextPageIdx = 0
+    setFilterBy(prevFilter => ({ ...prevFilter, pageIdx: nextPageIdx }))
+  }
+
+  return (<section>
     <section className="bug-index full main-layout">
       <BugFilter onSetFilter={onSetFilter} filterBy={filterBy} />
+      <BugSort setSortBy={setSortBy} sortBy={sortBy} />
       <Link to="/bug/edit">Add Bug</Link>
       <BugList bugs={bugs} onRemoveBug={onRemoveBug} />
     </section>
+    <button onClick={() => onChangePage(-1)}>-</button>
+    <span>{filterBy.pageIdx + 1}</span>
+    <button onClick={() => onChangePage(1)}>+</button>
+  </section>
   )
 }

@@ -3,60 +3,50 @@ const BASE_URL = '/api/bug/'
 
 export const bugService = {
     query,
-    get,
-    remove,
+    getById,
     save,
-    getEmptyBug,
+    remove,
     getDefaultFilter,
+    getFilterFromParams,
 }
 
-function query(filterBy = {}) {
-    return axios.get(BASE_URL)
+function query(filterBy = getDefaultFilter(), sortBy) {
+    return axios
+        .get(BASE_URL, { params: { filterBy, sortBy } })
         .then(res => res.data)
-        .then(bugs => {
-            if (filterBy.txt) {
-                const regExp = new RegExp(filterBy.txt, 'i')
-                bugs = bugs.filter(bug => regExp.test(bug.title) || regExp.test(bug.description))
-            }
+}
 
-            if (filterBy.severity) {
-                bugs = bugs.filter(bug => bug.severity >= filterBy.severity)
-            }
-            return bugs
+function getById(bugId) {
+    return axios
+        .get(BASE_URL + bugId)
+        .then(res => res.data)
+        .catch(err => {
+            console.error('err:', err)
         })
 }
 
-function get(bugId) {
-    return axios.get(BASE_URL + bugId).then(res => res.data)
-}
-
 function remove(bugId) {
-    return axios.get(BASE_URL + bugId + '/remove').then(res => res.data)
+    return axios.delete(BASE_URL + bugId).then(res => res.data)
 }
 
 function save(bug) {
-    const url = BASE_URL + 'save'
-
-    const { title, description, severity } = bug
-    const queryParams = { title, description, severity }
-    
-    if (bug._id) queryParams._id = bug._id
-
-    return axios.get(url, { params: queryParams })
-}
-
-// function save(bug) {
-//     const url = BASE_URL + 'save'
-//     let queryParams = `?title=${bug.title}&description=${bug.description}&severity=${bug.severity}`
-//     if (bug._id) queryParams += `&_id=${bug._id}`
-//     return axios.get(url + queryParams)
-// }
-
-function getEmptyBug() {
-    return { title: '', description: '', severity: 5 }
+    if (bug._id) {
+        return axios.put(BASE_URL, bug).then(res => res.data)
+    } else {
+        return axios.post(BASE_URL, bug).then(res => res.data)
+    }
 }
 
 function getDefaultFilter() {
-    return { txt: '', severity: '' }
+    return { title: '', minSeverity: 0, label: '', pageIdx: 0 }
 }
 
+function getFilterFromParams(searchParams = {}) {
+    const defaultFilter = getDefaultFilter()
+    return {
+        title: searchParams.get('title') || defaultFilter.title,
+        minSeverity: searchParams.get('minSeverity') || defaultFilter.minSeverity,
+        label: searchParams.get('label') || defaultFilter.label,
+        pageIdx: +searchParams.get('pageIdx') || defaultFilter.pageIdx,
+    }
+}

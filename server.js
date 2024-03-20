@@ -8,81 +8,107 @@ const app = express()
 
 // App Configuration
 app.use(express.static('public'))
+app.use(express.json())
 app.use(cookieParser()) // for using cookies
 
 // Routes
 
 // List
 app.get('/api/bug', (req, res) => {
-    bugService.query().then(bugs => {
-        res.send(bugs)
-    }).catch((err) => {
-        loggerService.error('Cannot get bugs', err)
-        res.status(400).send('Cannot get bugs')
-    })
-})
+    const { query } = req
 
-// Save - Create or Update
-app.get('/api/bug/save', (req, res) => {
+    const sortBy = JSON.parse(query.sortBy)
 
-    loggerService.debug('req.query', req.query)
-
-    const { title, description, severity, _id } = req.query
-    console.log('req.query', req.query)
-    const bug = {
-        _id,
-        title,
-        description,
-        severity: +severity,
+    const receivedFilter = JSON.parse(query.filterBy)
+    const filterBy = {
+        title: receivedFilter.title || '',
+        minSeverity: +receivedFilter.minSeverity || 0,
+        label: receivedFilter.label || '',
+        pageIdx: +receivedFilter.pageIdx || 0,
     }
 
-    bugService.save(bug).then((savedBug) => {
-        res.send(savedBug)
-    }).catch((err) => {
-        loggerService.error('Cannot save bug', err)
-        res.status(400).send('Cannot save bug')
-    })
-
-})
-
-// Read
-app.get('/api/bug/:bugId', (req, res) => {
-    // console.log('inside') // details and edit will go here
-    const { bugId } = req.params
-    const { visitedBugs = [] } = req.cookies // use the default if undefined
-
-    console.log('visitedBugs', visitedBugs)
-    
-    if (!visitedBugs.includes(bugId)) {
-        if (visitedBugs.length >= 3) return res.status(401).send('Wait for a bit')
-        else visitedBugs.push(bugId)
-    }
-    
-    res.cookie('visitedBugs', visitedBugs, { maxAge: 1000 * 70 })
-
-    bugService.getById(bugId)
-        .then(bug => res.send(bug))
+    bugService
+        .query(filterBy, sortBy)
+        .then(bugs => res.send(bugs))
         .catch(err => {
-            loggerService.error('Cannot get bug', err)
-            res.status(400).send('Cannot get bug')
-            // res.status(403).send(err)
+            loggerService.error('Cannot get bugs:', err)
+            res.status(400).send('Cannot get bugs')
         })
 })
 
-// Delete
-app.get('/api/bug/:bugId/remove', (req, res) => {
-    const { bugId } = req.params
-    bugService.remove(bugId).then(() => {
-        loggerService.info(`Bug ${bugId} removed`)
-        res.send('Removed!')
-    }).catch(err => {
-        loggerService.error('Cannot get bug', err)
-        res.status(400).send('Cannot get bug')
-    })
+// Read bug
+
+app.get('/api/bug/:id', (req, res) => {
+    const bugId = req.params.id
+    const visitedBugsIds = req.cookies.visitedBugsIds || []
+
+    if (!visitedBugsIds.includes(bugId)) visitedBugsIds.push(bugId)
+    res.cookie('visitedBugsIds', visitedBugsIds, { maxAge: 7 * 1000 })
+    console.log('User visited at the following bugs:', visitedBugsIds)
+
+    if (visitedBugsIds.length > 3) return res.status(401).send('Wait for a bit')
+
+    bugService
+        .getById(bugId)
+        .then(bug => res.send(bug))
+        .catch(err => {
+            loggerService.error('Cannot get bug:', err)
+            res.status(400).send('Cannot get bug')
+        })
+})
+
+// Create new bug
+
+app.post('/api/bug', (req, res) => {
+    const bugToSave = req.body
+    console.log(`bugToSave`, bugToSave)
+
+    bugService
+        .save(bugToSave)
+        .then(bug => res.send(bug))
+        .catch(err => {
+            loggerService.error('Cannot save bug:', err)
+            res.status(400).send('Cannot save bug')
+        })
+})
+
+// Update existing bug
+
+app.put('/api/bug', (req, res) => {
+    const bugToSave = {
+        _id: req.body._id,
+        title: req.body.title,
+        severity: +req.body.severity,
+        description: req.body.description,
+        createdAt: +req.body.createdAt,
+    }
+    console.log(`bugToSave`, bugToSave)
+
+    bugService
+        .save(bugToSave)
+        .then(bug => res.send(bug))
+        .catch(err => {
+            loggerService.error('Cannot save bug:', err)
+            res.status(400).send('Cannot save bug')
+        })
+})
+
+// Remove bug
+
+app.delete('/api/bug/:id', (req, res) => {
+    const bugId = req.params.id
+
+    bugService
+        .remove(bugId)
+        .then(() => res.send(bugId))
+        .catch(err => {
+            loggerService.error('Cannot remove bug:', err)
+            res.status(400).send('Cannot remove bug')
+        })
 })
 
 // Listen will always be the last line in our server!
-const PORT = 3030
-app.listen(PORT, () =>
-    loggerService.info(`Server listening on port http://127.0.0.1:${PORT}/`)
+
+app.listen(3030, () =>
+    loggerService.info(`Server listening on port http://127.0.0.1:3030/`)
 )

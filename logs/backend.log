@@ -62,3 +62,9 @@
 19.3.2024, 9:36:14 - INFO - Server listening on port http://127.0.0.1:3030/
 19.3.2024, 9:40:53 - INFO - Server listening on port http://127.0.0.1:3030/
 19.3.2024, 9:49:46 - INFO - Server listening on port http://127.0.0.1:3030/
+19.3.2024, 20:25:04 - INFO - Server listening on port http://127.0.0.1:3030/
+19.3.2024, 20:25:40 - INFO - Bug 7alC8 removed
+19.3.2024, 20:25:52 - DEBUG - req.query | {"title":"lolo","description":"lala","severity":"3","_id":"LuAY3"}
+19.3.2024, 20:26:08 - DEBUG - req.query | {"title":"","description":"","severity":"5"}
+19.3.2024, 21:56:55 - INFO - Server listening on port http://127.0.0.1:3030/
+19.3.2024, 21:58:27 - INFO - Server listening on port http://127.0.0.1:3030/
