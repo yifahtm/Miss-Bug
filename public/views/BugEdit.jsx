@@ -2,7 +2,7 @@ const { useEffect, useState } = React
 const { useParams, useNavigate } = ReactRouterDOM
 
 import { bugService } from '../services/bug.service.js'
-import { showErrorMsg } from '../event-bus.service.js'
+import { showErrorMsg } from '../services/event-bus.service.js'
 
 export function BugEdit() {
   const [bugToEdit, setBugToEdit] = useState(bugService.getEmptyBug())

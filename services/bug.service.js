@@ -11,7 +11,7 @@ export const bugService = {
     save,
 }
 
-const bugs = utilService.readJsonFile('data/bugs.json')
+const bugs = utilService.readJsonFile('data/bug.json')
 
 function query(filterBy, sortBy) {
     let bugsToReturn = bugs.slice()
@@ -77,7 +77,7 @@ function _saveCarsToFile() {
     return new Promise((resolve, reject) => {
         const data = JSON.stringify(bugs, null, 4)
 
-        fs.writeFile('data/bugs.json', data, err => {
+        fs.writeFile('data/bug.json', data, err => {
             if (err) {
                 console.log(err)
                 return reject(err)

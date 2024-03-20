@@ -1,11 +1,11 @@
 const { useEffect, useState } = React
 const { Link, useSearchParams } = ReactRouterDOM
 
-import { BugFilter } from '..BugFilter.jsx'
-import { BugSort } from '..BugSort.jsx'
-import { BugList } from '..BugList.jsx'
+import { BugFilter } from './../cmps/BugFilter.jsx'
+import { BugSort } from './../cmps/BugSort.jsx'
+import { BugList } from './../cmps/BugList.jsx'
 import { bugService } from '../services/bug.service.js'
-import { showSuccessMsg, showErrorMsg } from '..event-bus.service.js'
+import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 
 export function BugIndex() {
   const [searchParams, setSearchParams] = useSearchParams()

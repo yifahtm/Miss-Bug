@@ -21,7 +21,6 @@ function createEventEmitter() {
 export const eventBusService = createEventEmitter()
 
 
-
 ////////////////////////////////////////////////////
 
 
@@ -38,7 +37,8 @@ export function showErrorMsg(txt) {
     showUserMsg({ txt, type: 'error' })
 }
 
-
+// window.showSuccessMsg = showSuccessMsg
+// window.showErrorMsg = showErrorMsg
 
 
 
@@ -48,9 +48,13 @@ eventBusService.on('some-event', (data) => {
     console.log('Got some-event:', data)
 })
 
-const unsubscribe = eventBusService.on('some-event', (data) => {
-    console.log('Me Too!', data)
-})
+
+eventBusService.emit('some-event', { num: 100, blabla: 'Bla!' })
+
+
+// const unsubscribe = eventBusService.on('some-event', (data) => {
+//     console.log('Me Too!', data)
+// })
 
 // eventBusService.emit('some-event', { num: 100 })
 
@@ -67,8 +71,8 @@ const unsubscribe = eventBusService.on('some-event', (data) => {
 
 
 
-window.showSuccessMsg = showSuccessMsg
-window.showErrorMsg = showErrorMsg
+// window.showSuccessMsg = showSuccessMsg
+// window.showErrorMsg = showErrorMsg
 
 
 

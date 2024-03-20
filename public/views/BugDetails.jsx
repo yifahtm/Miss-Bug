@@ -1,5 +1,5 @@
-import { bugService } from '../bug.service.js'
-import { showErrorMsg } from '../event-bus.service.js'
+import { bugService } from '../services/bug.service.js'
+import { showErrorMsg } from '../services/event-bus.service.js'
 
 const { useEffect, useState } = React
 const { useParams, useNavigate } = ReactRouterDOM

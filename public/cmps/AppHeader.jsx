@@ -1,7 +1,7 @@
 import { UserMsg } from './UserMsg.jsx'
 import { LoginSignup } from './LoginSignup.jsx'
-import { userService } from '../user.service.js'
-import { showErrorMsg } from '../event-bus.service.js'
+import { userService } from '../services/user.service.js'
+import { showErrorMsg } from '../services/event-bus.service.js'
 
 const { Link, NavLink } = ReactRouterDOM
 const { useState } = React
