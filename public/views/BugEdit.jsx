@@ -1,13 +1,13 @@
-const {useEffect, useState} = React
-const {useParams, useNavigate} = ReactRouterDOM
+const { useEffect, useState } = React
+const { useParams, useNavigate } = ReactRouterDOM
 
-import {bugService} from '../services/bug.service.js'
-import {showErrorMsg} from '../services/event-bus.service.js'
+import { bugService } from '../services/bug.service.js'
+import { showErrorMsg } from '../event-bus.service.js'
 
 export function BugEdit() {
   const [bugToEdit, setBugToEdit] = useState(bugService.getEmptyBug())
   const navigate = useNavigate()
-  const {bugId} = useParams()
+  const { bugId } = useParams()
 
   useEffect(() => {
     if (bugId) loadBug()
@@ -24,10 +24,10 @@ export function BugEdit() {
       })
   }
 
-  function handleChange({target}) {
+  function handleChange({ target }) {
     const field = target.name
     const value = target.type === 'number' ? +target.value || '' : target.value
-    setBugToEdit((prevBug) => ({...prevBug, [field]: value}))
+    setBugToEdit((prevBug) => ({ ...prevBug, [field]: value }))
   }
 
   function onSaveBug(ev) {
@@ -38,7 +38,7 @@ export function BugEdit() {
     })
   }
 
-  const {title, description, severity} = bugToEdit
+  const { title, description, severity } = bugToEdit
 
   return (
     <section className="bug-edit">

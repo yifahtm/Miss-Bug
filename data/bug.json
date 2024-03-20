@@ -1,68 +1,61 @@
 [
   {
-    "_id": "blAoe",
-    "title": "",
-    "description": "",
-    "severity": 5,
-    "createdAt": 1710872768331
-  },
-  {
-    "_id": "LuAY3",
-    "title": "lolo",
-    "description": "lala",
-    "severity": 3,
-    "createdAt": 1710833270270
-  },
-  {
-    "_id": "i0QX5",
-    "title": "popo",
-    "description": "papi",
-    "severity": 2
-  },
-  {
-    "_id": "31Q8y",
-    "title": "r",
-    "description": "r",
-    "severity": 4
-  },
-  {
-    "_id": "ykYx1",
-    "title": "yaya",
-    "description": "22",
-    "severity": 2,
-    "createdAt": 1710786476921
-  },
-  {
-    "_id": "vjLfo",
-    "title": "22gg",
-    "description": "hello",
-    "severity": 5
-  },
-  {
-    "_id": "abcd",
-    "title": "Cannot save a Bug",
+    "_id": "1NF1N1T3",
+    "title": "Infinite Loop Detected",
     "description": "problem when clicking Save",
-    "severity": 4
+    "severity": 4,
+    "createdAt": 1542107359454,
+    "labels": [
+      "dev-branch"
+    ],
+    "creator": {
+      "_id": "u101",
+      "fullname": "Puki Ja"
+    }
   },
   {
-    "_id": "0Sp23",
-    "title": "hi",
-    "description": "undefined",
-    "severity": 5,
-    "createdAt": 1694117290488
-  },
-  {
-    "_id": "RJBVn",
-    "title": "shani",
-    "description": "shanbi",
+    "_id": "K3YB0RD",
+    "title": "Keyboard Not Found",
+    "description": "problem when clicking Save",
     "severity": 3,
-    "createdAt": 1694117417145
+    "createdAt": 1542107359454,
+    "labels": [
+      "critical",
+      "dev-branch"
+    ],
+    "creator": {
+      "_id": "u101",
+      "fullname": "Puki Ja"
+    }
   },
   {
-    "_id": "KwJBH",
-    "title": "asdfsda",
-    "description": "asfsd",
-    "severity": 5,
-    "createdAt": 1694122856035
+    "_id": "C0FF33",
+    "title": "404 Coffee Not Found",
+    "description": "problem when clicking Save",
+    "severity": 2,
+    "createdAt": 1542107359454,
+    "labels": [
+      "critical",
+      "need-CR"
+    ],
+    "creator": {
+      "_id": "u101",
+      "fullname": "Puki Ja"
+    }
+  },
+  {
+    "_id": "G0053",
+    "title": "Unexpected Response",
+    "description": "problem when clicking Save",
+    "severity": 3,
+    "createdAt": 1542107359454,
+    "labels": [
+      "need-CR",
+      "dev-branch"
+    ],
+    "creator": {
+      "_id": "u101",
+      "fullname": "Puki Ja"
+    }
   }
 ]
